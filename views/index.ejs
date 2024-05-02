@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1 style="margin: auto 50%;">E-BAZAAR</h1>
+            <button><a href="/product/new">New Product</a></button>
+       <% for(let item of products){%>
+        <div>
+            <img src="<%=item.img%>" alt="">
+            <h1>Name :<%=item.name%></h1>
+            <h3>Price : $<%=item.price%></h3>
+            <p>Description :<%=item.desc%></p>
+            <button><a href="/products/<%=item._id%>">id</a></button>
+            <button><a href="/products/<%=item._id%>/edit>">edit</a></button>
+        </div>
+        <%}%>
+
+
+</body>
+</html>
