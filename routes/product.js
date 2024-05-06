@@ -21,15 +21,16 @@ router.get("/products/:id", async(req, res) => {
     let { id } = req.params
     let foundProduct = await Product.findById(id).populate("reviews");
     // res.send(foundProduct)
-    res.render("show", {foundProduct})
+    res.render("show", {foundProduct , msg: req.flash('msg') })
 })
 
-router.get("/products/:id/edit", async (req, res) => {
+router.get("/products/:id/edit%3E", async (req, res) => {
   let { id } = req.params;
   let foundProduct = await Product.findById(id);
   res.render("edit", { foundProduct });
 });
 
+// actually editing in db
 
 router.patch("/products/:id", async (req, res) => {
   let { id } = req.params;
@@ -44,4 +45,6 @@ router.delete("/products/:id", async (req, res) => {
     await Product.findByIdAndDelete(id)
     res.redirect("/products")
 });
+
+
 module.exports = router

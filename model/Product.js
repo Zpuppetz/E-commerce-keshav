@@ -1,9 +1,6 @@
-const mongoose = require('mongoose');
-const Review = require('./Review');
-const { Schema } = mongoose
-const {model} = mongoose
+const mongoose = require("mongoose");
 
-let productSchema = new Schema({
+let productSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -14,20 +11,22 @@ let productSchema = new Schema({
     trim: true,
   },
   price: {
-    type: String,
-    trim: true,
-    min:0
+    type: Number,
+    required: true,
+    min: 0,
   },
   desc: {
     type: String,
-    trim: true
+    trim: true,
   },
-  reviews : [{
-    type: mongoose.Schema.Types.ObjectId ,
-    ref :`Review`,
-  },],
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
 });
 
-let Product = model(`Product`, productSchema)
+let Product = mongoose.model("Product", productSchema);
 
-module.exports = Product
+module.exports = Product;
